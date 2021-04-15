@@ -15,8 +15,9 @@ public class CampaignMemberStatusBatch implements Database.Batchable<SObject> {
         }
         query += 'Type FROM Campaign';
         if (String.isNotBlank(queryWhereClause)) {
-            query += queryWhereClause;
+            query += ' ' + queryWhereClause;
         }
+        System.debug('CampaignMemberStatusBatch query: ' + query);
         return Database.getQueryLocator(query);
     }
 
